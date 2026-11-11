@@ -1,0 +1,14 @@
+## square_mission 参数 —— 实机参考值（边长 1.0 m，5 个航点回到原点）
+## 用法：roslaunch square_mission square.launch param_file:=$(find square_mission)/config/square_hardware.yaml
+
+altitude : 0.8
+err_max  : 0.15
+if_debug : 0        # 实机必须 0：OFFBOARD 由飞手拨杆
+stop_time: 0.0
+
+waypoints:
+  "0": {x: 0.0, y: 0.0}
+  "1": {x: 1.0, y: 0.0}
+  "2": {x: 1.0, y: 1.0}
+  "3": {x: 0.0, y: 1.0}
+  "4": {x: 0.0, y: 0.0}
