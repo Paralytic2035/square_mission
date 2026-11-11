@@ -16,11 +16,11 @@ catkin_package(
 
 include_directories(${catkin_INCLUDE_DIRS})
 
-add_executable(square src/square.cpp)
-target_link_libraries(square ${catkin_LIBRARIES})
-add_dependencies(square ${catkin_EXPORTED_TARGETS})
+add_executable(square_mission_node src/square.cpp)
+target_link_libraries(square_mission_node ${catkin_LIBRARIES})
+add_dependencies(square_mission_node ${catkin_EXPORTED_TARGETS})
 
-install(TARGETS square
+install(TARGETS square_mission_node
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

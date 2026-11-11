@@ -3,7 +3,7 @@
        roslaunch square_mission square.launch param_file:=/abs/path/square_hardware.yaml -->
   <arg name="param_file" default="$(find square_mission)/config/square.yaml"/>
 
-  <node pkg="square_mission" type="square" name="square" output="screen">
+  <node pkg="square_mission" type="square_mission_node" name="square_mission" output="screen">
     <rosparam command="load" file="$(arg param_file)"/>
   </node>
 </launch>

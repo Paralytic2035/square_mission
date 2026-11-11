@@ -14,7 +14,7 @@ ROS Noetic 的**正方形定点巡航**任务包 —— 完整、可直接放进
 ```
 square_mission/
 ├── package.xml                 依赖声明
-├── CMakeLists.txt              add_executable(square src/square.cpp)
+├── CMakeLists.txt              add_executable(square_mission_node src/square.cpp)
 ├── config/
 │   ├── square.yaml             仿真默认参数（4 点 / 0.5 m / if_debug 1）
 │   └── square_hardware.yaml    实机参考参数（5 点 / 1.0 m / if_debug 0）
@@ -94,3 +94,16 @@ roslaunch square_mission square.launch param_file:=/home/airhust/template2026_ws
 ## License
 
 MIT
+
+## 关于可执行文件名
+
+本包的可执行文件叫 **`square_mission_node`**，不是 `square`。
+
+原因：catkin 工作空间里所有包共用一套 CMake 目标名空间。课程仓库的 `mission` 包
+已经有一个名为 `square` 的可执行目标，如果本包也叫 `square`，`catkin_make` 会直接报错：
+
+```
+add_executable cannot create target "square" because another target with the same name already exists
+```
+
+所以这里用 `square_mission_node`，与课程包并存不冲突。运行时节点名是 `square_mission`。
