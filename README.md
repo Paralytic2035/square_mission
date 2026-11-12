@@ -95,6 +95,13 @@ roslaunch square_mission square.launch param_file:=/home/airhust/template2026_ws
 
 MIT
 
+## 参数命名空间（坑）
+
+`launch/square.launch` 里的 `<rosparam command="load" .../>` 必须放在 **`<node>` 外面**（全局命名空间）。
+如果放在 `<node>` 里面，参数会落到 `/square_mission/altitude`，而源码用 `nh.param("altitude", ...)`
+读的是 `/altitude` —— 读不到时会退回到代码默认值，其中 `if_debug` 默认是 **1**（实机会自动切 OFFBOARD），很危险。
+课程 `mission` 包的 `square.launch` 也是放在外面的，保持一致。
+
 ## 关于可执行文件名
 
 本包的可执行文件叫 **`square_mission_node`**，不是 `square`。
